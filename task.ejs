@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1> this is task mannager</h1>
+  <% for(task of tasks){%>
+     
+    <div class="task-card">
+        <p class="task-id">Task ID: <%=task.id %></p>
+        
+        <h2 class="task-title"><%= task.title %></h2>
+        
+        <p class="task-description">
+            <%= task.description %>
+        </p>
+
+        <div class="task-info">
+            Status: <span class="status"><%=task.status %></span>
+        </div>
+
+        <div class="task-info">
+            Priority: <span class="priority"><%= task.priority %></span>
+        </div>
+
+        <div class="task-info">
+            Deadline: <span class="deadline"><%=task.deadline %></span>
+        </div>
+
+        <div class="task-info">
+            Subject: <%=task.subject %>
+        </div>
+        <form action="/task/<%=task.id %>?_method=DELETE" method="POST">
+            <button>Delete</button>
+        </form>
+        <a href="/task/<%= task.id %>/edit">Edit</a>
+    </div>
+  <%}%>
+  <a href="/task/new">Add Task</a>
+</body>
+</html>
